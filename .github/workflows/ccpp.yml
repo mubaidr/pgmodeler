@@ -31,7 +31,7 @@ jobs:
     #  run: git checkout tags/v0.9.2
       
     - name: install dependencies
-      run: apt-get install build-essential git qt5-default qt5-qmake libpq5 libxml2 pkg-config xml2 libxml2-dev libpq-dev libqt5svg5-dev
+      run: sudo apt-get install build-essential git qt5-default qt5-qmake libpq5 libxml2 pkg-config xml2 libxml2-dev libpq-dev libqt5svg5-dev
       
     - name: prepare make
     #  run: qmake pgmodeler.pro
