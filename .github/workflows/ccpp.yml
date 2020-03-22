@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: Custom Build Linux
 
 on:
   push:
@@ -44,9 +44,16 @@ jobs:
       run: sudo make install
       
     - name: make tar file artifact
-      run: tar -czvf /home/user/pgmodeler.tar.gz /share/pgmodeler/*
+      run: tar -czvf /home/user/pgmodeler-dist.tar.gz ./dist/*
+    - name: make tar file artifact
+      run: tar -czvf /home/user/pgmodeler-build.tar.gz ./build/*
       
     - uses: actions/upload-artifact@v1
       with:
         name: pgmodeler
-        path: /home/user/pgmodeler.tar.gz
+        path: /home/user/pgmodeler-linux-dist.tar.gz
+    
+    - uses: actions/upload-artifact@v1
+      with:
+        name: pgmodeler
+        path: /home/user/pgmodeler-linux-build.tar.gz
