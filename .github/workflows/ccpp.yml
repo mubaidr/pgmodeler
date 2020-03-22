@@ -44,7 +44,7 @@ jobs:
       run: sudo make install
       
     - name: make tar file artifact
-      run: tar -czvf /home/user/pgmodeler.tar.gz /home/user/pgmodeler/build/*
+      run: tar -czvf /home/user/pgmodeler.tar.gz /share/pgmodeler/*
       
     - uses: actions/upload-artifact@v1
       with:
