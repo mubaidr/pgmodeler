@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: Deploy Windows
 
 on:
   push:
@@ -14,12 +14,19 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: run windows deploy script
-      run: sudo ./windeploy.sh
+      run: sudo bash ./windeploy.sh
      
     - name: make tar file artifact
-      run: tar -czvf /home/user/pgmodeler.tar.gz dist/*
+      run: tar -czvf /home/user/pgmodeler-dist.tar.gz ./dist/*
+    - name: make tar file artifact
+      run: tar -czvf /home/user/pgmodeler-build.tar.gz ./build/*
       
     - uses: actions/upload-artifact@v1
       with:
         name: pgmodeler
-        path: /home/user/pgmodeler.tar.gz
+        path: /home/user/pgmodeler-win-dist.tar.gz
+    
+    - uses: actions/upload-artifact@v1
+      with:
+        name: pgmodeler
+        path: /home/user/pgmodeler-win-build.tar.gz
