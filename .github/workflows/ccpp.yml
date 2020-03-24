@@ -28,18 +28,13 @@ jobs:
       
     - name: run make install
       run: sudo make install
-      
-    - name: make tar file artifact
-      run: tar -czvf /home/user/pgmodeler-dist.tar.gz ./*
-    - name: make tar file artifact
-      run: tar -czvf /home/user/pgmodeler-build.tar.gz ./*
-      
-    - uses: actions/upload-artifact@v1
+          
+      # prepare artifact
+    - name: Prepare artifact
+      run: tar -cvzf ${{ github.workspace }}/pgmodeler-dist.tar.gz ${{ github.workspace }}/pgmodeler/build/
+
+    # upload artifact
+    - uses: actions/upload-artifact@v2-preview
       with:
         name: pgmodeler
-        path: /home/user/pgmodeler-linux-dist.tar.gz
-    
-    - uses: actions/upload-artifact@v1
-      with:
-        name: pgmodeler
-        path: /home/user/pgmodeler-linux-build.tar.gz
+        path: ${{ github.workspace }}/pgmodeler-dist.tar.gz
